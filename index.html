@@ -10,10 +10,37 @@
   <style>
 
     body{
+      font-family: Arial, Helvetica, sans-serif;
       display: grid;
       grid-template-columns: 1fr 1fr;
     }
 
+    h1{
+      font-size: 50px;
+      font-weight: 500;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+      display: inline;
+    }
+
+
+    #statistics-btn{
+      position: fixed;
+      bottom: 0;
+      right: 0;
+      width: 50px;
+      height: 50px;
+      margin: 10px;
+    }
+
+
+    #task-pen-img{
+      width: 50px;
+      height: 50px;
+      margin: 10px;
+      display: inline;
+    }
 
 
 
@@ -35,7 +62,7 @@
 
   <div id="right-half-container">
     <h1>Tasks</h1>
-    <img src="https://cdn-icons-png.flaticon.com/512/1860/1860115.png">
+    <img id="task-pen-img" src="https://cdn-icons-png.flaticon.com/512/1860/1860115.png">
     <button class="task-btn">
 
       <div class="task-left">
