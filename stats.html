@@ -1,0 +1,101 @@
+<div id="graph_container">
+    <!DOCTYPE html>
+<html>
+<head>
+	<title>Weekday Hours Graph</title>
+	<style>
+		.graph {
+			width: 600px;
+			height: 400px;
+			border: 1px solid black;
+			margin: 0 auto;
+			position: relative;
+		}
+		.graph .x-axis {
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			width: 100%;
+			height: 40px;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			font-size: 18px;
+			font-weight: bold;
+			padding: 0 20px;
+		}
+		.graph .x-axis .day {
+			flex: 1;
+			text-align: center;
+		}
+		.graph .y-axis {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 40px;
+			height: 100%;
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
+			align-items: center;
+			font-size: 18px;
+			font-weight: bold;
+			padding: 20px 0;
+		}
+		.graph .y-axis .hour {
+			transform: rotate(-90deg);
+			text-align: center;
+		}
+		.graph .plot-area {
+			position: absolute;
+			top: 0;
+			right: 0;
+			bottom: 40px;
+			left: 40px;
+			display: flex;
+			flex-wrap: wrap;
+			align-items: flex-end;
+			justify-content: space-between;
+		}
+		.graph .plot-area .data-point {
+			width: calc(100% / 7 - 10px);
+			height: calc(10% - 10px);
+			background-color: blue;
+			margin-bottom: 10px;
+			margin-right: 10px;
+			transition: all 0.2s ease-in-out;
+		}
+		.graph .plot-area .data-point:hover {
+			transform: scale(1.2);
+			background-color: red;
+			cursor: pointer;
+		}
+	</style>
+</head>
+<body>
+	<div class="graph">
+		<div class="x-axis">
+			<div class="day">Mon</div>
+			<div class="day">Tue</div>
+			<div class="day">Wed</div>
+			<div class="day">Thu</div>
+			<div class="day">Fri</div>
+			<div class="day">Sat</div>
+			<div class="day">Sun</div>
+		</div>
+		<div class="y-axis">
+			<div class="hour">0</div>
+			<div class="hour">1</div>
+			<div class="hour">2</div>
+			<div class="hour">3</div>
+			<div class="hour">4</div>
+			<div class="hour">5</div>
+			<div class="hour">6</div>
+			<div class="hour">7</div>
+			<div class="hour">8</div>
+			<div class="hour">9</div>
+			<div class="hour">10</div>
+		</div>
+		<div class="plot-area">
+			<div class="data-point" style="height: 50%;
+</div>
