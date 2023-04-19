@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Example Page</title>
+	<style>
+		.container {
+			display: flex;
+			flex-wrap: wrap;
+			max-width: 1000px;
+			margin: 0 auto;
+			padding: 20px;
+		}
+		.back-btn {
+			font-size: 40px;
+			cursor: pointer;
+            position: absolute;
+            left: 20px;
+            top: 40px;
+			margin-right: 20px;
+		}
+		.table {
+			flex: 1;
+			margin-right: 20px;
+			border-collapse: collapse;
+			font-size: 18px;
+		}
+		.table td {
+			padding: 10px;
+			border: 1px solid black;
+		}
+		.graph {
+			flex: 1;
+			height: 400px;
+			/* border: 1px solid black; */
+			margin-left: 20px;
+			position: relative;
+		}
+		.graph .x-axis {
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			width: 100%;
+			height: 40px;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			font-size: 18px;
+			font-weight: bold;
+			padding: 0 20px;
+		}
+		.graph .x-axis .day {
+			flex: 1;
+			text-align: center;
+		}
+		.graph .y-axis {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 40px;
+			height: 85%;
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
+			align-items: center;
+			font-size: 18px;
+			font-weight: bold;
+			padding: 20px 0;
+		}
+		.graph .y-axis .hour {
+			transform: rotate(-90deg);
+			text-align: center;
+		}
+		.graph .plot-area {
+			position: absolute;
+			top: 0;
+			right: 0;
+			bottom: 40px;
+			left: 40px;
+			display: flex;
+			flex-wrap: wrap;
+			align-items: flex-end;
+			justify-content: space-between;
+		}
+		.graph .plot-area .data-point {
+			width: calc(100% / 7 - 10px);
+			height: calc(10% - 10px);
+			background-color: rgb(142, 142, 255);
+			margin-bottom: 10px;
+			margin-right: 10px;
+			transition: all 0.2s ease-in-out;
+		}
+		.graph .plot-area .data-point:hover {
+			transform: scale(1.05);
+			background-color: rgb(89, 89, 255);
+			cursor: pointer;
+		}
+        h1 {
+            text-align: center;
+            font-size: 60px;
+        }
+	</style>
+</head>
+<body>
+    <h1>My Study Data</h1>
+    <button class="back-btn">&#8592;</button>
+	<div class="container">
+		<table class="table">
+			<tr>
+				<td>Column 1, Row 1</td>
+				<td>Column 2, Row 1</td>
+			</tr>
+			<tr>
+				<td>Column 1, Row 2</td>
+				<td>Column 2, Row 2</td>
+            </tr>
+            <tr>
+				<td>Column 1, Row 3</td>
+				<td>Column 2, Row 3</td>
+			</tr>
+		</table>
+		<div class="graph">
+			<div class="y-axis">
+				<div class="hour">8</div>
+				<div class="hour">7</div>
+				<div class="hour">6</div>
+				<div class="hour">5</div>
+				<div class="hour">4</div>
+				<div class="hour">3</div>
+				<div class="hour">2</div>
+				<div class="hour">1</div>
+				<div class="hour">0</div>
+			</div>
+			<div class="plot-area">
+				<div class="data-point" style="height: 20%;"></div>
+				<div class="data-point" style="height: 50%;"></div>
+				<div class="data-point" style="height: 30%;"></div>
+				<div class="data-point" style="height: 80%;"></div>
+				<div class="data-point" style="height: 10%;"></div>
+				<div class="data-point" style="height: 40%;"></div>
+				<div class="data-point" style="height: 70%;"></div>
+			</div>
+			<div class="x-axis">
+				<div class="day">Mon</div>
+				<div class="day">Tue</div>
+				<div class="day">Wed</div>
+				<div class="day">Thu</div>
+				<div class="day">Fri</div>
+				<div class="day">Sat</div>
+				<div class="day">Sun</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
