@@ -85,13 +85,15 @@
 
     }
 
+    function end_session(){
+      alert("end session TODO");
+    }
+
     function load_next_task(){
       
       current_task_index += 1;
       if(current_task_index >= task_list.length){
-        //end session
-        console.log("end session");
-        alert("end session TODO");
+        end_session();
         return;
       }
       load_current_task(task_list[current_task_index]);
