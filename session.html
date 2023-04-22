@@ -106,6 +106,11 @@
       collaborator_search_popup.style.display = "flex";
     }
 
+    function hide_collaborator_search_popup(){
+      const collaborator_search_popup = document.getElementById("add-collaborator-popup");
+      collaborator_search_popup.style.display = "none";
+    }
+
     document.addEventListener("DOMContentLoaded", function(event) {
       console.log("DOM fully loaded and parsed");
 
@@ -122,6 +127,13 @@
       add_collaborator_button.addEventListener("click", ()=>{
         show_collaborator_search_popup();
       });
+
+      //add collaborator search popup close button event listener
+      const add_collaborator_cancel_button = document.getElementById("add-collaborator-cancel-button");
+      add_collaborator_cancel_button.addEventListener("click", ()=>{
+        hide_collaborator_search_popup();
+      });
+
 
 
       //finish task button event listener
