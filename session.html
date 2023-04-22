@@ -338,6 +338,20 @@
 
     }
 
+    #add-collaborator-popup{
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 300px;
+      height: 300px;
+      background-color: #F2F2F2;
+      display: none;
+      flex-direction: column;
+      justify-content: space-around;
+      align-items: center;
+      border: 1px solid black;
+    }
+
 
   </style>
 </head>
@@ -385,6 +399,13 @@
       <p class="collaborator-name">Daniel O</p>
       <p class="collaborator-name">Nathan M</p>
     </div>
+
+  </div>
+
+  <div id="add-collaborator-popup">
+
+    <input type="text" id="add-collaborator-input" placeholder="Enter Collaborator's Email">
+    <button id="add-collaborator-submit-button">Submit</button>
 
   </div>
 
