@@ -50,12 +50,27 @@
 
     function load_current_task(task){
       //remove current task from task list
+
+      let task_name = task.task_name;
+      //capitalize first letter of task name
+      task_name = task_name.charAt(0).toUpperCase() + task_name.slice(1);
+
+      //find task in task-list-div children and remove it
+      const task_list_div = document.getElementById("task-list-div");
+      const task_list_div_children = task_list_div.children;
+      for(let i = 0; i < task_list_div_children.length; i++){
+        if(task_list_div_children[i].innerText == task_name){
+          task_list_div_children[i].remove();
+          break;
+        }
+      }
+
+
+
       //TODO
       //add current task to current task display
       const task_name_elem = document.getElementById("current-task-name");
       //capitalize first letter of task name
-      let task_name = task.task_name;
-      task_name = task_name.charAt(0).toUpperCase() + task_name.slice(1);
       task_name_elem.innerText = task_name;
       //add current task estimated time to current task estimated time display
       const task_time_elem = document.getElementById("current-task-estimated-time");
