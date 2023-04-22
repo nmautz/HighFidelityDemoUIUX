@@ -6,6 +6,30 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Session Active</title>
 
+  <script>
+    document.addEventListener("DOMContentLoaded", function(event) {
+      console.log("DOM fully loaded and parsed");
+
+
+      //finish task button event listener
+      const finish_task_button = document.getElementById("finish-task-button");
+      finish_task_button.addEventListener("click", ()=>{
+        console.log("finish task button clicked");
+        //get next task from task list
+        //if there is a next task, set current task to next task
+        //if there is no next task, end session
+        
+      });
+
+
+
+    });
+
+
+
+
+  </script>
+
   <style>
 
     body{
