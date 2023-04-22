@@ -7,6 +7,29 @@
   <title>Session Active</title>
 
   <script>
+
+
+    let task_lists = [
+      {
+        "task_name": "task 1",
+        "task_estimated_time": "1 hour",
+        "task_difficulty": "easy",
+        "task_notes": "notes for task 1"
+      },
+      {
+        "task_name": "task 2",
+        "task_estimated_time": "2 hours",
+        "task_difficulty": "medium",
+        "task_notes": "notes for task 2"
+      },
+      {
+        "task_name": "task 3",
+        "task_estimated_time": "3 hours",
+        "task_difficulty": "hard",
+        "task_notes": "notes for task 3"
+      }
+    ]
+
     document.addEventListener("DOMContentLoaded", function(event) {
       console.log("DOM fully loaded and parsed");
 
@@ -18,7 +41,7 @@
         //get next task from task list
         //if there is a next task, set current task to next task
         //if there is no next task, end session
-        
+
       });
 
 
