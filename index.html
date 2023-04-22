@@ -5,6 +5,272 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Home Page</title>
+
+  <script>
+
+    var right_half_container = null
+
+    function add_task(task_name, task_date, difficulty){
+      const task_btn = document.createElement("button")
+      task_btn.classList.add("task-btn")
+
+      const task_left = document.createElement("div")
+      task_left.classList.add("task-left")
+
+      const task_name_p = document.createElement("p")
+      task_name_p.classList.add("task-name")
+      task_name_p.innerText = task_name
+
+      const task_date_p = document.createElement("p")
+      task_date_p.classList.add("task-date")
+      task_date_p.innerText = task_date
+
+      task_left.appendChild(task_name_p)
+      task_left.appendChild(task_date_p)
+
+      const task_right = document.createElement("div")
+      task_right.classList.add("task-right")
+
+      const task_difficulty_text = document.createElement("p")
+      task_difficulty_text.classList.add("task-difficulty-text")
+      task_difficulty_text.innerText = difficulty
+
+      const delete_task_button = document.createElement("p")
+      delete_task_button.classList.add("delete-task-button")
+      delete_task_button.innerText = "X"
+
+      //delete task button event listener
+      delete_task_button.addEventListener("click", ()=>{
+        delete_task(task_btn)
+      })
+
+      task_right.appendChild(task_difficulty_text)
+      task_right.appendChild(delete_task_button)
+
+      task_btn.appendChild(task_left)
+      task_btn.appendChild(task_right)
+
+      //append second to last in right_half_container
+      right_half_container.insertBefore(task_btn, right_half_container.children[right_half_container.children.length-1])
+
+    }
+
+    function delete_task(task_btn){
+      task_btn.remove()
+    }
+
+    var show_delete_buttons = false
+    document.addEventListener("DOMContentLoaded", ()=>{
+
+      right_half_container = document.getElementById("right-half-container")
+
+      //add sample task 
+      add_task("Burger Essay", "Sept 20 2023", "!!")
+
+      //when pen is clicked show delete buttons for tasks
+      document.getElementById("task-pen-img").addEventListener("click", ()=>{
+        const delete_task_buttons = document.getElementsByClassName("delete-task-button")
+        if(show_delete_buttons){
+          for(let i = 0; i < delete_task_buttons.length; i++){
+            delete_task_buttons[i].style.display = "none"
+          }
+          show_delete_buttons = false
+        }else{
+          for(let i = 0; i < delete_task_buttons.length; i++){
+            delete_task_buttons[i].style.display = "inline"
+          }
+          show_delete_buttons = true
+        }
+      })
+
+    })
+
+
+
+  </script>
+
+
+
+
+
+  <style>
+
+    html{
+      
+    }
+
+    body{
+      font-family: Arial, Helvetica, sans-serif;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      margin: 10vh;
+    }
+
+
+    h1{
+      font-size: 50px;
+      font-weight: 500;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+      display: inline;
+    }
+
+
+    #task-pen-container{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    #task-pen-img, #statistics-btn{
+      cursor: pointer;
+      transition: transform ease-in-out 100ms;
+    }
+
+    #task-pen-img:hover, #statistics-btn:hover{
+      transform: scale(1.1);
+    }
+
+    #task-pen-img:active, #statistics-btn:active{
+      transform: scale(0.9);
+    }
+
+
+    #statistics-btn{
+      position: fixed;
+      bottom: 0;
+      right: 0;
+      width: 50px;
+      height: 50px;
+      margin: 10px;
+    }
+
+
+    #task-pen-img{
+      width: 50px;
+      height: 50px;
+      margin: 10px;
+      display: inline;
+    }
+
+    #left-half-container, #right-half-container{
+      background-color: #c9c8c8;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    #left-half-container button{
+      width: 200px;
+      height: 50px;
+      margin: 10px;
+      font-size: 20px;
+      font-weight: 500;
+      border-radius: 10px;
+      border: none;
+      background-color: #ffffff;
+      cursor: pointer;
+    }
+
+    #left-half-container button:hover{
+      background-color: #bbbbbb;
+    }
+
+    #left-half-container button:active{
+      background-color: #aaaaaa;
+    }
+
+    #right-half-container button{
+      width: 300px;
+      height: 80px;
+      margin: 10px;
+      font-size: 20px;
+      font-weight: 500;
+      border-radius: 0px;
+      border: none;
+      background-color: #ffffff;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    #right-half-container button:hover{
+      background-color: #e8e8e8;
+    }
+
+    #right-half-container button:active{
+      background-color: #d8d8d8;
+    }
+
+    .task-left{
+      position: relative;
+      padding-left: 10px;
+
+      display: flexbox;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .task-right{
+      position: relative;
+      border-left: 1px solid black;
+      padding-left: 10px;
+    }
+    .delete-task-button{
+      position: absolute;
+      display: none;
+      top: -3svh;
+      right: 0;
+
+
+      width: 20px;
+      height: 20px;
+
+      border-radius: 25px;
+      background-color: red;
+    }
+
+    .delete-task-button:hover{
+      background-color: #9c0000;
+    }
+
+    .delete-task-button:active{
+      background-color: #2f0000;
+      color: #ffffff;
+    }
+
+
+    #add-task-button{
+      width: 50px;
+      height: 50px;
+      margin: 10px;
+      font-size: 20px;
+      font-weight: 500;
+      border-radius: 25px;
+      border: none;
+      background-color: #ffffff;
+      cursor: pointer;
+
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    #add-task-button:hover{
+      background-color: #bbbbbb;
+    }
+
+    #add-task-button:active{
+      background-color: #aaaaaa;
+    }
+    
+  </style>
+
 </head>
 <body>
 
@@ -19,24 +285,16 @@
   </div>
 
   <div id="right-half-container">
-    <h1>Tasks</h1>
-    <button class="task-btn">
-
-      <div class="task-left">
-        <p class="task-name">Burger Essay</p>
-        <p class="task-date">Feb 15,2023</p>
-      </div>
-
-      <div class="task-right">
-
-      </div>
+    <div id="task-pen-container">
+      <h1>Tasks</h1>
+      <img id="task-pen-img" src="https://cdn-icons-png.flaticon.com/512/1860/1860115.png">
+    </div>
 
 
-
-
-
-    </button>
+    <p id="add-task-button">+</p>
   </div>
+
+  <img id="statistics-btn" src="https://www.iconpacks.net/icons/1/free-chart-icon-646-thumb.png">
   
 </body>
 </html>
