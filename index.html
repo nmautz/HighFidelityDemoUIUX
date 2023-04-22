@@ -89,19 +89,6 @@
       display: inline;
     }
 
-    #statistics-btn{
-      cursor: pointer;
-      transition: all ease-in-out 300ms;
-    }
-
-    #statistics-btn:hover{
-      transform: scale(1.1);
-    }
-
-    #statistics-btn:active{
-      transform: scale(0.9);
-    }
-
 
     #task-pen-container{
       display: flex;
@@ -109,15 +96,16 @@
       align-items: center;
     }
 
-    #task-pen-img{
+    #task-pen-img, #statistics-btn{
       cursor: pointer;
+      transition: transform ease-in-out 100ms;
     }
 
-    #task-pen-img:hover{
+    #task-pen-img:hover, #statistics-btn:hover{
       transform: scale(1.1);
     }
 
-    #task-pen-img:active{
+    #task-pen-img:active, #statistics-btn:active{
       transform: scale(0.9);
     }
 
