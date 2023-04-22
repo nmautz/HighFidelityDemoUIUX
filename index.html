@@ -39,6 +39,11 @@
       delete_task_button.classList.add("delete-task-button")
       delete_task_button.innerText = "X"
 
+      //delete task button event listener
+      delete_task_button.addEventListener("click", ()=>{
+        delete_task(task_btn)
+      })
+
       task_right.appendChild(task_difficulty_text)
       task_right.appendChild(delete_task_button)
 
@@ -50,11 +55,30 @@
 
     }
 
+    function delete_task(task_btn){
+      task_btn.remove()
+    }
 
+    var show_delete_buttons = false
     document.addEventListener("DOMContentLoaded", ()=>{
 
       right_half_container = document.getElementById("right-half-container")
 
+      //when pen is clicked show delete buttons for tasks
+      document.getElementById("task-pen-img").addEventListener("click", ()=>{
+        const delete_task_buttons = document.getElementsByClassName("delete-task-button")
+        if(show_delete_buttons){
+          for(let i = 0; i < delete_task_buttons.length; i++){
+            delete_task_buttons[i].style.display = "none"
+          }
+          show_delete_buttons = false
+        }else{
+          for(let i = 0; i < delete_task_buttons.length; i++){
+            delete_task_buttons[i].style.display = "inline"
+          }
+          show_delete_buttons = true
+        }
+      })
 
     })
 
