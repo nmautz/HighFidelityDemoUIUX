@@ -101,6 +101,11 @@
       load_current_task(task_list[current_task_index]);
     }
 
+    function show_collaborator_search_popup(){
+      const collaborator_search_popup = document.getElementById("add-collaborator-popup");
+      collaborator_search_popup.style.display = "block";
+    }
+
     document.addEventListener("DOMContentLoaded", function(event) {
       console.log("DOM fully loaded and parsed");
 
@@ -110,6 +115,13 @@
       }
 
       load_next_task();
+
+
+      //add collaborator button event listener
+      const add_collaborator_button = document.getElementById("add-collaborator-button");
+      add_collaborator_button.addEventListener("click", ()=>{
+        show_collaborator_search_popup();
+      });
 
 
       //finish task button event listener
@@ -342,14 +354,16 @@
       position: absolute;
       bottom: 0;
       right: 0;
-      width: 300px;
-      height: 300px;
-      background-color: #F2F2F2;
+      width: 500px;
+      height: 500px;
+      background-color: #c9c9c9;
       display: none;
       flex-direction: column;
       justify-content: space-around;
       align-items: center;
       border: 1px solid black;
+      z-index: 100;
+      border-radius: 25px;
     }
 
 
