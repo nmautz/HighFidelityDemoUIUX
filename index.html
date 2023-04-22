@@ -6,6 +6,65 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Home Page</title>
 
+  <script>
+
+    var right_half_container = null
+
+    function add_task(task_name, task_date, difficulty){
+      const task_btn = document.createElement("button")
+      task_btn.classList.add("task-btn")
+
+      const task_left = document.createElement("div")
+      task_left.classList.add("task-left")
+
+      const task_name_p = document.createElement("p")
+      task_name_p.classList.add("task-name")
+      task_name_p.innerText = task_name
+
+      const task_date_p = document.createElement("p")
+      task_date_p.classList.add("task-date")
+      task_date_p.innerText = task_date
+
+      task_left.appendChild(task_name_p)
+      task_left.appendChild(task_date_p)
+
+      const task_right = document.createElement("div")
+      task_right.classList.add("task-right")
+
+      const task_difficulty_text = document.createElement("p")
+      task_difficulty_text.classList.add("task-difficulty-text")
+      task_difficulty_text.innerText = difficulty
+
+      const delete_task_button = document.createElement("p")
+      delete_task_button.classList.add("delete-task-button")
+      delete_task_button.innerText = "X"
+
+      task_right.appendChild(task_difficulty_text)
+      task_right.appendChild(delete_task_button)
+
+      task_btn.appendChild(task_left)
+      task_btn.appendChild(task_right)
+
+      //append second to last in right_half_container
+      right_half_container.insertBefore(task_btn, right_half_container.children[right_half_container.children.length-1])
+
+    }
+
+
+    document.addEventListener("DOMContentLoaded", ()=>{
+
+      right_half_container = document.getElementById("right-half-container")
+
+
+    })
+
+
+
+  </script>
+
+
+
+
 
   <style>
 
