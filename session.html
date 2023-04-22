@@ -36,6 +36,8 @@
       }
     ]
 
+    var current_task_index = -1;
+
 
     function add_task_to_task_list_display(task){
       const task_list_div = document.getElementById("task-list-div");
@@ -83,6 +85,18 @@
 
     }
 
+    function load_next_task(){
+      
+      current_task_index += 1;
+      if(current_task_index >= task_list.length){
+        //end session
+        console.log("end session");
+        alert("end session TODO");
+        return;
+      }
+      load_current_task(task_list[current_task_index]);
+    }
+
     document.addEventListener("DOMContentLoaded", function(event) {
       console.log("DOM fully loaded and parsed");
 
@@ -91,12 +105,14 @@
         add_task_to_task_list_display(task_list[i]);
       }
 
-      load_current_task(task_list[0]);
+      load_next_task();
+
 
       //finish task button event listener
       const finish_task_button = document.getElementById("finish-task-button");
       finish_task_button.addEventListener("click", ()=>{
         console.log("finish task button clicked");
+        load_next_task();
         //get next task from task list
         //if there is a next task, set current task to next task
         //if there is no next task, end session
