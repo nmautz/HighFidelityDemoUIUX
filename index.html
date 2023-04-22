@@ -64,6 +64,9 @@
 
       right_half_container = document.getElementById("right-half-container")
 
+      //add sample task 
+      add_task("Burger Essay", "Sept 20 2023", "!!")
+
       //when pen is clicked show delete buttons for tasks
       document.getElementById("task-pen-img").addEventListener("click", ()=>{
         const delete_task_buttons = document.getElementsByClassName("delete-task-button")
@@ -286,18 +289,6 @@
       <h1>Tasks</h1>
       <img id="task-pen-img" src="https://cdn-icons-png.flaticon.com/512/1860/1860115.png">
     </div>
-    <button class="task-btn">
-
-      <div class="task-left">
-        <p class="task-name">Burger Essay</p>
-        <p class="task-date">Feb 15,2023</p>
-      </div>
-
-      <div class="task-right">
-        <p class="task-difficulty-text">!!</p>
-        <p class="delete-task-button">X</p>
-      </div>
-    </button>
 
 
     <p id="add-task-button">+</p>
