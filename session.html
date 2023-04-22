@@ -88,6 +88,37 @@
 
       });
 
+      let time_elapsed = 0;
+      update_clock();
+      function update_clock(){
+        const time_elapsed_elem = document.getElementById("time-text");
+
+        let hours = Math.floor(time_elapsed / 3600);
+        let minutes = Math.floor((time_elapsed % 3600) / 60);
+        let seconds = Math.floor(time_elapsed % 60);
+
+        let time_elapsed_string = "";
+        if(hours < 10){
+          time_elapsed_string += "0";
+        }
+        time_elapsed_string += hours + ":";
+        if(minutes < 10){
+          time_elapsed_string += "0";
+        }
+        time_elapsed_string += minutes + ":";
+        if(seconds < 10){
+          time_elapsed_string += "0";
+        }
+        time_elapsed_string += seconds;
+
+
+
+        time_elapsed_elem.innerText = time_elapsed_string;
+        time_elapsed++;
+
+      }
+      let time_elapsed_interval = setInterval(update_clock, 1000);
+
 
 
     });
