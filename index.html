@@ -68,6 +68,12 @@
       add_task("Burger Essay", "Sept 20 2023", "!!")
 
 
+      //statistics button event listener
+      const statistics_button = document.getElementById("statistics-btn")
+      statistics_button.addEventListener("click", ()=>{
+        window.location.href = "stats.html"
+      })
+
       //start session button event listener
       document.getElementById("start-button").addEventListener("click", ()=>{
         window.location.href = "session.html"
