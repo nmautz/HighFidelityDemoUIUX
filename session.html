@@ -9,7 +9,7 @@
   <script>
 
 
-    let task_lists = [
+    let task_list = [
       {
         "task_name": "task 1",
         "task_estimated_time": "1 hour",
@@ -27,12 +27,34 @@
         "task_estimated_time": "3 hours",
         "task_difficulty": "hard",
         "task_notes": "notes for task 3"
+      },
+      {
+        "task_name": "task 4",
+        "task_estimated_time": "4 hours",
+        "task_difficulty": "easy",
+        "task_notes": "notes for task 4"
       }
     ]
+
+
+    function add_task_to_task_list_display(task){
+      const task_list_div = document.getElementById("task-list-div");
+      const task_p = document.createElement("p");
+      task_p.classList.add("task-list-task");
+      let task_name = task.task_name;
+      //capitalize first letter of task name
+      task_name = task_name.charAt(0).toUpperCase() + task_name.slice(1);
+      task_p.innerText = task_name;
+      task_list_div.appendChild(task_p);
+    }
 
     document.addEventListener("DOMContentLoaded", function(event) {
       console.log("DOM fully loaded and parsed");
 
+      //add tasks to task list display
+      for(let i = 0; i < task_list.length; i++){
+        add_task_to_task_list_display(task_list[i]);
+      }
 
       //finish task button event listener
       const finish_task_button = document.getElementById("finish-task-button");
@@ -199,10 +221,7 @@
     </div>
 
     <div id="task-list-div">
-      <p class="task-list-task">Task Name</p>
-      <p class="task-list-task">Task2 Name</p>
-      <p class="task-list-task">Task3 Name</p>
-      <p class="task-list-task">Task4 Name</p>
+
     </div>
 
   </div>
