@@ -48,6 +48,26 @@
       task_list_div.appendChild(task_p);
     }
 
+    function load_current_task(task){
+      //remove current task from task list
+      //TODO
+      //add current task to current task display
+      const task_name_elem = document.getElementById("current-task-name");
+      //capitalize first letter of task name
+      let task_name = task.task_name;
+      task_name = task_name.charAt(0).toUpperCase() + task_name.slice(1);
+      task_name_elem.innerText = task_name;
+      //add current task estimated time to current task estimated time display
+      const task_time_elem = document.getElementById("current-task-estimated-time");
+      let time_text = "Estimated Time: ";
+      task_time_elem.innerText = time_text + task.task_estimated_time;
+      //add current task notes to current task notes display
+      const task_notes_elem = document.getElementById("notes-content-textarea");
+      task_notes_elem.innerText = task.task_notes;
+
+
+    }
+
     document.addEventListener("DOMContentLoaded", function(event) {
       console.log("DOM fully loaded and parsed");
 
@@ -55,6 +75,8 @@
       for(let i = 0; i < task_list.length; i++){
         add_task_to_task_list_display(task_list[i]);
       }
+
+      load_current_task(task_list[0]);
 
       //finish task button event listener
       const finish_task_button = document.getElementById("finish-task-button");
