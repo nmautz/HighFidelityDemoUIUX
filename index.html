@@ -67,6 +67,12 @@
       //add sample task 
       add_task("Burger Essay", "Sept 20 2023", "!!")
 
+
+      //start session button event listener
+      document.getElementById("start-button").addEventListener("click", ()=>{
+        window.location.href = "session.html"
+      })
+
       //when pen is clicked show delete buttons for tasks
       document.getElementById("task-pen-img").addEventListener("click", ()=>{
         const delete_task_buttons = document.getElementsByClassName("delete-task-button")

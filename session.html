@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Session Active</title>
+
+  <script>
+
+
+    let task_list = [
+      {
+        "task_name": "task 1",
+        "task_estimated_time": "1 hour",
+        "task_difficulty": "easy",
+        "task_notes": "notes for task 1"
+      },
+      {
+        "task_name": "task 2",
+        "task_estimated_time": "2 hours",
+        "task_difficulty": "medium",
+        "task_notes": "notes for task 2"
+      },
+      {
+        "task_name": "task 3",
+        "task_estimated_time": "3 hours",
+        "task_difficulty": "hard",
+        "task_notes": "notes for task 3"
+      },
+      {
+        "task_name": "task 4",
+        "task_estimated_time": "4 hours",
+        "task_difficulty": "easy",
+        "task_notes": "notes for task 4"
+      }
+    ]
+
+    var current_task_index = -1;
+
+
+    function add_task_to_task_list_display(task){
+      const task_list_div = document.getElementById("task-list-div");
+      const task_p = document.createElement("p");
+      task_p.classList.add("task-list-task");
+      let task_name = task.task_name;
+      //capitalize first letter of task name
+      task_name = task_name.charAt(0).toUpperCase() + task_name.slice(1);
+      task_p.innerText = task_name;
+      task_list_div.appendChild(task_p);
+    }
+
+    function load_current_task(task){
+      //remove current task from task list
+
+      let task_name = task.task_name;
+      //capitalize first letter of task name
+      task_name = task_name.charAt(0).toUpperCase() + task_name.slice(1);
+
+      //find task in task-list-div children and remove it
+      const task_list_div = document.getElementById("task-list-div");
+      const task_list_div_children = task_list_div.children;
+      for(let i = 0; i < task_list_div_children.length; i++){
+        if(task_list_div_children[i].innerText == task_name){
+          task_list_div_children[i].remove();
+          break;
+        }
+      }
+
+
+
+      //TODO
+      //add current task to current task display
+      const task_name_elem = document.getElementById("current-task-name");
+      //capitalize first letter of task name
+      task_name_elem.innerText = task_name;
+      //add current task estimated time to current task estimated time display
+      const task_time_elem = document.getElementById("current-task-estimated-time");
+      let time_text = "Estimated Time: ";
+      task_time_elem.innerText = time_text + task.task_estimated_time;
+      //add current task notes to current task notes display
+      const task_notes_elem = document.getElementById("notes-content-textarea");
+      task_notes_elem.innerText = task.task_notes;
+
+
+    }
+
+    function end_session(){
+      //TODO
+      //redirect to home page
+      window.location.href = "index.html";
+    }
+
+    function load_next_task(){
+      
+      current_task_index += 1;
+      if(current_task_index >= task_list.length){
+        end_session();
+        return;
+      }
+      load_current_task(task_list[current_task_index]);
+    }
+
+    function show_collaborator_search_popup(){
+      const collaborator_search_popup = document.getElementById("add-collaborator-popup");
+      collaborator_search_popup.style.display = "flex";
+    }
+
+    function hide_collaborator_search_popup(){
+      const collaborator_search_popup = document.getElementById("add-collaborator-popup");
+      collaborator_search_popup.style.display = "none";
+    }
+
+    document.addEventListener("DOMContentLoaded", function(event) {
+      console.log("DOM fully loaded and parsed");
+
+      //add tasks to task list display
+      for(let i = 0; i < task_list.length; i++){
+        add_task_to_task_list_display(task_list[i]);
+      }
+
+      load_next_task();
+
+
+      //add collaborator button event listener
+      const add_collaborator_button = document.getElementById("add-collaborator-button");
+      add_collaborator_button.addEventListener("click", ()=>{
+        show_collaborator_search_popup();
+      });
+
+      //add collaborator search popup close button event listener
+      const add_collaborator_cancel_button = document.getElementById("add-collaborator-cancel-button");
+      add_collaborator_cancel_button.addEventListener("click", ()=>{
+        hide_collaborator_search_popup();
+      });
+
+
+
+      //finish task button event listener
+      const finish_task_button = document.getElementById("finish-task-button");
+      finish_task_button.addEventListener("click", ()=>{
+        console.log("finish task button clicked");
+        load_next_task();
+        //get next task from task list
+        //if there is a next task, set current task to next task
+        //if there is no next task, end session
+
+      });
+
+      //end session button event listener
+      const end_session_button = document.getElementById("end-session-button");
+      end_session_button.addEventListener("click", ()=>{
+        end_session();
+      });
+
+      let time_elapsed = 0;
+      update_clock();
+      function update_clock(){
+        const time_elapsed_elem = document.getElementById("time-text");
+
+        let hours = Math.floor(time_elapsed / 3600);
+        let minutes = Math.floor((time_elapsed % 3600) / 60);
+        let seconds = Math.floor(time_elapsed % 60);
+
+        let time_elapsed_string = "";
+        if(hours < 10){
+          time_elapsed_string += "0";
+        }
+        time_elapsed_string += hours + ":";
+        if(minutes < 10){
+          time_elapsed_string += "0";
+        }
+        time_elapsed_string += minutes + ":";
+        if(seconds < 10){
+          time_elapsed_string += "0";
+        }
+        time_elapsed_string += seconds;
+
+
+
+        time_elapsed_elem.innerText = time_elapsed_string;
+        time_elapsed++;
+
+      }
+      let time_elapsed_interval = setInterval(update_clock, 1000);
+
+
+
+    });
+
+
+
+
+  </script>
+
+  <style>
+
+    body{
+      margin: 0;
+      padding: 0;
+      background-color: #F2F2F2;
+      display: grid;
+      grid-template-rows: 50% 50%;
+      height: 100svh;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    #top-div{
+      width: 100%;
+      background-color: #F2F2F2;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+      align-items: center;
+      border-bottom: 1px solid #000000;
+    }
+
+    #time-elapsed-div{
+      width: 30%;
+      height: 80%;
+      background-color: #F2F2F2;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      align-items: center;
+      border-right: 1px solid #000000;
+    }
+
+    #time-text{
+      font-size: 3em;
+      font-weight: bold;
+      color: #000000;
+    }
+
+    #elapsed-text{
+      font-size: 1.5em;
+      font-weight: bold;
+      color: #000000;
+    }
+
+    #current-task-div{
+      width: 30%;
+      height: 80%;
+      background-color: #F2F2F2;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      align-items: center;
+      border-right: 1px solid #000000;
+    }
+
+    #current-task-text{
+      font-size: 1.5em;
+      font-weight: bold;
+      color: #000000;
+    }
+
+    #current-task-name{
+      font-size: 2em;
+      font-weight: bold;
+      color: #000000;
+    }
+
+    #current-task-estimated-time{
+      font-size: 1.5em;
+      font-weight: bold;
+      color: #000000;
+    }
+
+    #task-list-div{
+      width: 30%;
+      height: 80%;
+      background-color: #F2F2F2;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      align-items: center;
+    }
+
+    .task-list-task{
+      font-size: 1.5em;
+      font-weight: bold;
+      color: #000000;
+    }
+
+
+    #notes-div{
+
+      display: grid;
+      grid-template-rows: 20% 90%;
+      width: 70%;
+      height: 100%;
+
+    }
+
+    #bottom-div{
+      width: 100%;
+      background-color: #F2F2F2;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+      align-items: center;
+    }
+
+    #bottom-left-div{
+      width: 70%;
+      height: 100%;
+      background-color: #F2F2F2;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      align-items: center;
+      border-right: 1px solid #000000;
+    }
+
+    #buttons-div{
+      width: 70%;
+      display: grid;
+      grid-template-columns: 50% 50%;
+    }
+
+    #collaborators-div{
+      width: 30%;
+      height: 100%;
+      background-color: #F2F2F2;
+      display: flex;
+      flex-direction: column;
+      justify-content: start;
+      align-items: center;
+      overflow: hidden;
+
+    }
+
+    .collaborator-name{
+      padding: 15%;
+      width: 100%;
+      text-align: center;
+
+
+    }
+
+    .collaborator-name:nth-child(even){
+
+      background-color: #d3d3d3;
+      
+
+    }
+
+    .collaborators-title{
+      border-bottom: 1px solid black;
+      width: 100%;
+      text-align: center;
+      padding-bottom: 25px;
+
+    }
+
+    #add-collaborator-button{
+      position: absolute;
+      bottom: 0;
+      right: 90px;
+      padding: 3%;
+
+    }
+
+    #add-collaborator-popup{
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 500px;
+      height: 500px;
+      background-color: #c9c9c9;
+      display: none;
+      flex-direction: column;
+      justify-content: space-around;
+      align-items: center;
+      border: 1px solid black;
+      z-index: 100;
+      border-radius: 25px;
+
+    }
+
+    #add-collaborator-popup input{
+      width: 80%;
+      height: 50px;
+      border-radius: 25px;
+      border: 1px solid black;
+      font-size: 1.5em;
+      padding-left: 10px;
+    }
+
+    #add-collaborator-submit-button, #add-collaborator-cancel-button{
+      width: 80%;
+      height: 50px;
+      border-radius: 25px;
+      border: 1px solid black;
+      font-size: 1.5em;
+      background-color: #ededed;
+    }
+
+    #add-collaborator-submit-button:hover, #add-collaborator-cancel-button:hover{
+      background-color: #d3d3d3;
+    }
+
+    #add-collaborator-submit-button:active, #add-collaborator-cancel-button:active{
+      background-color: #c9c9c9;
+    }
+
+    #add-collaborator-popup input:focus{
+      outline: none;
+    }
+
+
+
+
+  </style>
+</head>
+<body>
+
+
+  <div id="top-div">
+    <div id = "time-elapsed-div">
+      <p id="time-text">00:35</p>
+      <p id="elapsed-text">Time Elapsed</p>
+    </div>
+
+    <div id="current-task-div">
+      <p id="current-task-text">Current Task</p>
+      <p id="current-task-name">Task Name</p>
+      <p id="current-task-estimated-time">Estimated Time: 00:00</p>
+    </div>
+
+    <div id="task-list-div">
+
+    </div>
+
+  </div>
+
+  <div id="bottom-div">
+
+    <div id="bottom-left-div">
+      <div id="notes-div">
+        <div id="notes-title-div">
+          <p>Notes</p>
+        </div>
+        <div id="notes-content-div">
+          <textarea id="notes-content-textarea" name="notes-content-textarea" rows="10" cols="30">notes about task</textarea>
+        </div>
+
+
+      </div>
+      <div id="buttons-div">
+        <button id="end-session-button">End Session</button>
+        <button id="finish-task-button">Finish Task</button>
+      </div>
+    </div>
+    <div id="collaborators-div">
+      <p class="collaborators-title">Collaborators</p>
+      <p class="collaborator-name">Daniel O</p>
+      <p class="collaborator-name">Nathan M</p>
+    </div>
+
+  </div>
+
+  <div id="add-collaborator-popup">
+
+    <input type="text" id="add-collaborator-input" placeholder="Enter Collaborator's Email">
+    <button id="add-collaborator-submit-button">Submit</button>
+    <button id="add-collaborator-cancel-button">Cancel</button>
+
+  </div>
+
+
+  <button id="add-collaborator-button">Add Collaborator</button>
+
+
+  
+</body>
+</html>
