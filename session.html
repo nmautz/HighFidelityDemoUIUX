@@ -121,6 +121,12 @@
 
       });
 
+      //end session button event listener
+      const end_session_button = document.getElementById("end-session-button");
+      end_session_button.addEventListener("click", ()=>{
+        end_session();
+      });
+
       let time_elapsed = 0;
       update_clock();
       function update_clock(){
