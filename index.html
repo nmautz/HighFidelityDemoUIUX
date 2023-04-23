@@ -64,7 +64,9 @@
         task_difficulty: difficulty,
         task_notes: notes
       }
+      //add task to session storage
       task_list.push(task_object)
+      sessionStorage.setItem("task_list", JSON.stringify(task_list))
 
     }
 
