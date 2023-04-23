@@ -35,6 +35,9 @@
         "task_notes": "notes for task 4"
       }
     ]
+    
+    //get task list from session storage
+    task_list = JSON.parse(sessionStorage.getItem("task_list"));
 
     var current_task_index = -1;
 
