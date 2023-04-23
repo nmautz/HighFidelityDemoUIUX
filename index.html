@@ -10,7 +10,9 @@
 
     var right_half_container = null
 
-    function add_task(task_name, task_date, difficulty){
+    var task_list = []
+
+    function add_task(task_name, task_date, difficulty, notes){
       const task_btn = document.createElement("button")
       task_btn.classList.add("task-btn")
 
@@ -52,6 +54,17 @@
 
       //append second to last in right_half_container
       right_half_container.insertBefore(task_btn, right_half_container.children[right_half_container.children.length-1])
+      let est_task_time = Math.floor(Math.random() * 100) + 1;
+      if(notes == undefined){
+        notes = ""
+      }
+      let task_object = {
+        task_name: task_name,
+        task_estimated_time: est_task_time,
+        task_difficulty: difficulty,
+        task_notes: notes
+      }
+      task_list.push(task_object)
 
     }
 
