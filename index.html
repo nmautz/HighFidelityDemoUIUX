@@ -77,7 +77,21 @@
     var show_delete_buttons = false
     document.addEventListener("DOMContentLoaded", ()=>{
 
+      
+      //popup fix
+      const popup = document.getElementById("popup")
+      popup.style.display = "none"
+
       right_half_container = document.getElementById("right-half-container")
+
+      //add task button 
+      const add_task_button = document.getElementById("add-task-button")
+      
+      add_task_button.addEventListener("click", ()=>{
+        console.log("add task button clicked")
+        togglePopup(false)
+      })
+
 
       //add sample task 
       add_task("Burger Essay", "Sept 20 2023", "!!")
@@ -117,6 +131,7 @@
       var popup = document.getElementById("popup");
       if (popup.style.display === "none") {
         popup.style.display = "flex";
+        console.log("showing popup")
       } else {
         popup.style.display = "none";
       }
@@ -367,7 +382,7 @@
     </div>
 
 
-    <p id="add-task-button" onclick="togglePopup(false)">+</p>
+    <p id="add-task-button">+</p>
   </div>
 
   <img id="statistics-btn" src="https://www.iconpacks.net/icons/1/free-chart-icon-646-thumb.png">
