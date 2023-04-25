@@ -175,6 +175,10 @@
     document.addEventListener("DOMContentLoaded", function(event) {
       console.log("DOM fully loaded and parsed");
 
+      //add collaborators to collaborators display
+      add_collaborator("Nathan M");
+      add_collaborator("Daniel O");
+
       //add tasks to task list display
       for(let i = 0; i < task_list.length; i++){
         add_task_to_task_list_display(task_list[i]);
@@ -490,6 +494,10 @@
     }
 
 
+    .delete-collaborator-button{
+      background-color: black;
+    }
+
 
 
   </style>
@@ -535,8 +543,6 @@
     </div>
     <div id="collaborators-div">
       <p class="collaborators-title">Collaborators</p>
-      <p class="collaborator-name">Daniel O</p>
-      <p class="collaborator-name">Nathan M</p>
     </div>
 
   </div>
