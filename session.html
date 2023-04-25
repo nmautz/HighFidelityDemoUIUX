@@ -72,6 +72,18 @@
       const collaborator_p = document.createElement("p");
       collaborator_p.classList.add("collaborator-name");
       collaborator_p.innerText = name;
+
+
+      //create delete button
+      const delete_button = document.createElement("button");
+      delete_button.classList.add("delete-collaborator-button");
+      delete_button.innerText = "X";
+      delete_button.addEventListener("click", function(){
+        remove_collaborator(name);
+      });
+      collaborator_p.appendChild(delete_button);
+
+
       //add to beginning of div but after first child
       collaborators_div.insertBefore(collaborator_p, collaborators_div.children[1]);
       return true;
@@ -85,7 +97,11 @@
       //if it is remove it
       const collaborators_div_children = collaborators_div.children;
       for(let i = 0; i < collaborators_div_children.length; i++){
-        if(collaborators_div_children[i].innerText == name){
+        let text = collaborators_div_children[i].innerText;
+        //remove X from text
+        text = text.substring(0, text.length - 1);
+
+        if(text == name){
           collaborators_div_children[i].remove();
           break;
         }
