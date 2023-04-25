@@ -56,13 +56,25 @@
 
     function add_collaborator(name){
 
+      
+
       //get collaborator div 
       const collaborators_div = document.getElementById("collaborators-div");
+      
+      //check if collaborator already exists
+      const collaborators_div_children = collaborators_div.children;
+      for(let i = 0; i < collaborators_div_children.length; i++){
+        if(collaborators_div_children[i].innerText == name){
+          return false;
+        }
+      }
+      
       const collaborator_p = document.createElement("p");
       collaborator_p.classList.add("collaborator-name");
       collaborator_p.innerText = name;
-      collaborators_div.appendChild(collaborator_p);
-
+      //add to beginning of div but after first child
+      collaborators_div.insertBefore(collaborator_p, collaborators_div.children[1]);
+      return true;
     }
 
     function remove_collaborator(name){
@@ -174,9 +186,15 @@
         //get collaborator name from input
         const collaborator_name_input = document.getElementById("add-collaborator-input");
         let collaborator_name = collaborator_name_input.value;
-        add_collaborator(collaborator_name);
+        let name_exists = !add_collaborator(collaborator_name); // not add collaborator because it returns false if name already exists
 
-        hide_collaborator_search_popup();
+        if(name_exists){
+          //TODO
+          //show error message
+          alert("name already exists");
+        }else{
+          hide_collaborator_search_popup();
+        }
       });
 
 
