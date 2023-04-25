@@ -53,6 +53,36 @@
       task_list_div.appendChild(task_p);
     }
 
+
+    function add_collaborator(name){
+
+      //get collaborator div 
+      const collaborators_div = document.getElementById("collaborators-div");
+      const collaborator_p = document.createElement("p");
+      collaborator_p.classList.add("collaborator-name");
+      collaborator_p.innerText = name;
+      collaborators_div.appendChild(collaborator_p);
+
+    }
+
+    function remove_collaborator(name){
+      const collaborators_div = document.getElementById("collaborators-div");
+      //get children of collaborators div
+
+      //for each child see if inner html is equal to name
+      //if it is remove it
+      const collaborators_div_children = collaborators_div.children;
+      for(let i = 0; i < collaborators_div_children.length; i++){
+        if(collaborators_div_children[i].innerText == name){
+          collaborators_div_children[i].remove();
+          break;
+        }
+      }
+
+
+
+    }
+
     function load_current_task(task){
       //remove current task from task list
 
@@ -134,6 +164,18 @@
       //add collaborator search popup close button event listener
       const add_collaborator_cancel_button = document.getElementById("add-collaborator-cancel-button");
       add_collaborator_cancel_button.addEventListener("click", ()=>{
+        hide_collaborator_search_popup();
+      });
+
+      //add collaborator submit button event listener
+      const add_collaborator_submit_button = document.getElementById("add-collaborator-submit-button");
+      add_collaborator_submit_button.addEventListener("click", ()=>{
+
+        //get collaborator name from input
+        const collaborator_name_input = document.getElementById("add-collaborator-input");
+        let collaborator_name = collaborator_name_input.innerHTML;
+        add_collaborator(collaborator_name);
+
         hide_collaborator_search_popup();
       });
 
@@ -360,8 +402,9 @@
     #add-collaborator-button{
       position: absolute;
       bottom: 0;
-      right: 90px;
-      padding: 3%;
+      right: 10px;
+      height: 30px;
+      overflow: hidden;
 
     }
 
