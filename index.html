@@ -83,7 +83,18 @@
     }
 
     function delete_task(task_btn){
+      //remove task from session storage
+      let task_name = task_btn.children[0].children[0].innerText
+      let task_list = JSON.parse(sessionStorage.getItem("task_list"))
+      for(let i = 0; i < task_list.length; i++){
+        if(task_list[i].task_name == task_name){
+          task_list.splice(i, 1)
+          sessionStorage.setItem("task_list", JSON.stringify(task_list))
+          break
+        }
+      }
       task_btn.remove()
+
     }
 
     var show_delete_buttons = false
