@@ -366,6 +366,25 @@
     .checkmark{
       height: 30px;
     }
+
+    #join-session-popup{
+      width: 190px;
+      height: 300px;
+      background-color: rgb(177, 177, 177);
+      position: absolute;
+      left: 19%;
+      top: 43%;
+
+      border-radius: 10px;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+
+      display: none;
+
+    }
+
   </style>
 
   
@@ -427,6 +446,15 @@
       <button onclick="togglePopup(true)">Save</button>
       <button onclick="togglePopup(false)">Close</button>
     </div>
+  </div>
+
+    <div id="join-session-popup">
+
+    <button class="join-sesson-item">John Marston</button>
+    <button class="join-sesson-item">Betty White</button>
+
+
+
   </div>
 </body>
 </html>
