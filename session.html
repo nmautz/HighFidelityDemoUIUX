@@ -179,6 +179,9 @@
       add_collaborator("Nathan M");
       add_collaborator("Daniel O");
 
+      if(task_list == null){
+        task_list = [];
+      }
       //add tasks to task list display
       for(let i = 0; i < task_list.length; i++){
         add_task_to_task_list_display(task_list[i]);
