@@ -172,6 +172,7 @@
       collaborator_search_popup.style.display = "none";
     }
 
+    var host_bool = false;
     document.addEventListener("DOMContentLoaded", function(event) {
       console.log("DOM fully loaded and parsed");
 
@@ -181,12 +182,19 @@
       const host_text = url_split[1];
       const host_split = host_text.split("=");
       const host = host_split[1];
+      if(host == "true"){
+        host_bool = true;
+      }
 
-      console.log(host);
+      if(host_bool){
+        //add collaborators to collaborators display
+        add_collaborator("Nathan M");
+      }else{
+        //add collaborators to collaborators display
+        add_collaborator("Nathan M");
+        add_collaborator("Daniel O");
+      }
 
-      //add collaborators to collaborators display
-      add_collaborator("Nathan M");
-      add_collaborator("Daniel O");
 
       if(task_list == null){
         task_list = [];
