@@ -100,6 +100,8 @@
     var show_delete_buttons = false
     document.addEventListener("DOMContentLoaded", ()=>{
 
+      //delete task_list from session storage
+      sessionStorage.removeItem("task_list")
       
       //popup fix
       const popup = document.getElementById("popup")
