@@ -109,6 +109,13 @@
       add_task("Burger Essay", "Sept 20 2023", "!!")
 
 
+      //john button hardcode
+      const john_button = document.getElementById("john-button")
+      john_button.addEventListener("click", ()=>{
+        window.location.href = "session.html?host=false"
+      })
+
+
       //statistics button event listener
       const statistics_button = document.getElementById("statistics-btn")
       statistics_button.addEventListener("click", ()=>{
@@ -469,8 +476,8 @@
 
     <div id="join-session-popup">
 
-    <button class="join-sesson-item">John Marston</button>
-    <button class="join-sesson-item">Betty White</button>
+    <button class="join-sesson-item" id="john-button">John Marston</button>
+    <button class="join-sesson-item" id="betty-button">Betty White</button>
 
 
 
