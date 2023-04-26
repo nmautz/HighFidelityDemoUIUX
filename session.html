@@ -74,14 +74,17 @@
       collaborator_p.innerText = name;
 
 
-      //create delete button
-      const delete_button = document.createElement("button");
-      delete_button.classList.add("delete-collaborator-button");
-      delete_button.innerText = "X";
-      delete_button.addEventListener("click", function(){
-        remove_collaborator(name);
-      });
-      collaborator_p.appendChild(delete_button);
+      if(host_bool){
+        //create delete button
+        const delete_button = document.createElement("button");
+        delete_button.classList.add("delete-collaborator-button");
+        delete_button.innerText = "X";
+        delete_button.addEventListener("click", function(){
+          remove_collaborator(name);
+        });
+        collaborator_p.appendChild(delete_button);
+      }
+
 
 
       //add to beginning of div but after first child
@@ -188,11 +191,15 @@
 
       if(host_bool){
         //add collaborators to collaborators display
-        add_collaborator("Nathan M");
       }else{
         //add collaborators to collaborators display
         add_collaborator("Nathan M");
         add_collaborator("Daniel O");
+
+        //remove add collaborator button
+        const add_collaborator_button = document.getElementById("add-collaborator-button");
+        add_collaborator_button.remove();
+
       }
 
 
@@ -207,11 +214,14 @@
       load_next_task();
 
 
-      //add collaborator button event listener
-      const add_collaborator_button = document.getElementById("add-collaborator-button");
-      add_collaborator_button.addEventListener("click", ()=>{
-        show_collaborator_search_popup();
-      });
+      if(host_bool){
+        //add collaborator button event listener
+        const add_collaborator_button = document.getElementById("add-collaborator-button");
+        add_collaborator_button.addEventListener("click", ()=>{
+          show_collaborator_search_popup();
+        });
+      }
+
 
       //add collaborator search popup close button event listener
       const add_collaborator_cancel_button = document.getElementById("add-collaborator-cancel-button");
