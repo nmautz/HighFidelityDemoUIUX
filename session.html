@@ -220,6 +220,11 @@
         add_collaborator_button.addEventListener("click", ()=>{
           show_collaborator_search_popup();
         });
+
+        
+      }else{
+        const end_session_button = document.getElementById("end-session-button");
+        end_session_button.innerText = "Leave Session";
       }
 
 
