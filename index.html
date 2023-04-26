@@ -8,6 +8,18 @@
 
   <script>
 
+    function show_join_session_popup(){
+      const popup = document.getElementById("join-session-popup")
+      popup.style.display = "flex"
+
+    }
+
+    function hide_join_session_popup(){
+
+
+    }
+    
+
     var right_half_container = null
 
     var task_list = []
@@ -109,8 +121,10 @@
       })
 
       //join session button event listener
-      document.getElementById("join-session-button").addEventListener("click", ()=>{
-        window.location.href = "session.html?host=false"
+      document.getElementById("join-session-button").addEventListener("click", (e)=>{
+        show_join_session_popup()
+        e.stopPropagation()
+        e.preventDefault()
       })
 
       //when pen is clicked show delete buttons for tasks
@@ -129,6 +143,11 @@
         }
       })
 
+    })
+
+    document.addEventListener("click", (e)=>{
+      const popup = document.getElementById("join-session-popup")
+      popup.style.display = "none"
     })
 
 
