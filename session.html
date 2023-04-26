@@ -175,6 +175,15 @@
     document.addEventListener("DOMContentLoaded", function(event) {
       console.log("DOM fully loaded and parsed");
 
+      //get host from url
+      const url = window.location.href;
+      const url_split = url.split("?");
+      const host_text = url_split[1];
+      const host_split = host_text.split("=");
+      const host = host_split[1];
+
+      console.log(host);
+
       //add collaborators to collaborators display
       add_collaborator("Nathan M");
       add_collaborator("Daniel O");
