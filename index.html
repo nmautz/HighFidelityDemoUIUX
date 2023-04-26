@@ -105,7 +105,12 @@
 
       //start session button event listener
       document.getElementById("start-button").addEventListener("click", ()=>{
-        window.location.href = "session.html"
+        window.location.href = "session.html?host=true"
+      })
+
+      //join session button event listener
+      document.getElementById("join-session-button").addEventListener("click", ()=>{
+        window.location.href = "session.html?host=false"
       })
 
       //when pen is clicked show delete buttons for tasks
