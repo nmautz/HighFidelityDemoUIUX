@@ -181,6 +181,7 @@
         let dueDate = document.getElementById("dueDate")
         let importance = document.getElementById("importance")
         let notes = document.getElementById("notes")
+        notes = notes.value
         add_task(taskName.value,dueDate.value,importance.value, notes)
         taskName.value = ""
         dueDate.value = ""
