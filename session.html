@@ -315,6 +315,27 @@
 
   <style>
 
+    #notes-content-textarea {
+      width: 800px;
+      height: 200px;
+    }
+
+    #finish-task-button {
+      height: 60px;
+      font-size: 20px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    #end-session-button {
+      height: 35px;
+      width: 800px;
+      font-size: 20px;
+      font-weight: bold;
+      cursor: pointer;
+      background-color: #ffc2c2;
+    }
+
     body{
       margin: 0;
       padding: 0;
@@ -566,6 +587,7 @@
       <p id="current-task-text">Current Task</p>
       <p id="current-task-name">Task Name</p>
       <p id="current-task-estimated-time">Estimated Time: 00:00</p>
+      <button id="finish-task-button">Finish Task</button>
     </div>
 
     <div id="task-list-div">
@@ -589,7 +611,6 @@
       </div>
       <div id="buttons-div">
         <button id="end-session-button">End Session</button>
-        <button id="finish-task-button">Finish Task</button>
       </div>
     </div>
     <div id="collaborators-div">
