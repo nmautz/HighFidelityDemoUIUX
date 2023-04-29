@@ -37,7 +37,11 @@
     ]
     
     //get task list from session storage
+    let old_task_list = task_list
     task_list = JSON.parse(sessionStorage.getItem("task_list"));
+    if(task_list == null || task_list.length == 0){
+      task_list = old_task_list;
+    }
 
     var current_task_index = -1;
 
