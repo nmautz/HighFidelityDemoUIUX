@@ -97,6 +97,21 @@
 
     }
 
+    function animate_button_vibrate(button, time_s){
+      button.style.animation = "vibrate " + time_s + "s"
+      button.style.transition = "all ease-in-out 100ms"
+      //translate button up and down for time_s seconds
+      button.style.transform = "translateY(15px)"
+
+      setTimeout(()=>{
+        button.style.transform = "translateY(-15px)"
+
+        setTimeout(()=>{
+          button.style.transform = "translateY(0)"
+          button.style.animation = "none"
+        }, 100)
+      }, 100)
+    }
     var show_delete_buttons = false
     document.addEventListener("DOMContentLoaded", ()=>{
 
@@ -134,6 +149,12 @@
 
       //start session button event listener
       document.getElementById("start-button").addEventListener("click", ()=>{
+        if(task_list.length == 0){
+          //get start button
+          const start_button = document.getElementById("start-button")
+          animate_button_vibrate(start_button, 0.5)
+          return
+        }
         window.location.href = "session.html?host=true"
       })
 
