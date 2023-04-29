@@ -151,8 +151,8 @@
       document.getElementById("start-button").addEventListener("click", ()=>{
         if(task_list.length == 0){
           //get start button
-          const start_button = document.getElementById("start-button")
-          animate_button_vibrate(start_button, 0.5)
+          const add_task_button = document.getElementById("add-task-button")
+          animate_button_vibrate(add_task_button, 0.5)
           return
         }
         window.location.href = "session.html?host=true"
